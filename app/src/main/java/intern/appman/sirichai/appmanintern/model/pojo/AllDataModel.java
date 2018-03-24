@@ -3,6 +3,7 @@ package intern.appman.sirichai.appmanintern.model.pojo;
 import java.util.List;
 
 public class AllDataModel {
+
     private String id;
     private String firstname;
     private String lastname;
