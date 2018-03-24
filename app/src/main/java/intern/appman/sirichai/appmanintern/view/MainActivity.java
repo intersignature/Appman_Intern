@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         jsonController = new JsonController(getResources());
         jsonController.loadJson();
         setupRecyclerView();
-
     }
 
     private void setupRecyclerView() {
@@ -39,6 +38,4 @@ public class MainActivity extends AppCompatActivity {
         titleTv.setText("Id:" + jsonController.allDataModel.getId() + " Name: " + jsonController.allDataModel.getFirstname()
                 + " " + jsonController.allDataModel.getLastname());
     }
-
-
 }
