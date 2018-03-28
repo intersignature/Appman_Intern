@@ -8,16 +8,16 @@ import intern.appman.sirichai.appmanintern.R;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-    public TextView docTypeTv;
+    protected TextView docTypeTv;
     private ItemClickListener itemClickListener;
 
-    public RecyclerViewHolder(View itemView) {
+    protected RecyclerViewHolder(View itemView) {
         super(itemView);
         docTypeTv = itemView.findViewById(R.id.docTypeTv);
         itemView.setOnClickListener(this);
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    protected void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 

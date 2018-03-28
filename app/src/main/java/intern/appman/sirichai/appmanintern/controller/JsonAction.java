@@ -37,17 +37,27 @@ public class JsonAction {
     }
 
     private void parseJson(String s) {
+        // dataList will contain all data child
         List<Data> dataList = new ArrayList<>();
         try {
+            // Get all string to json object
             JSONObject root = new JSONObject(s);
+            // Get all data in root's child to json array
             JSONArray datas = root.getJSONArray("data");
+            // Loop for get each data and add to dataList
             for (int i = 0; i < datas.length(); i++) {
+                // Get each data to json object
                 JSONObject data = datas.getJSONObject(i);
+                // Get description in each data to json object
                 JSONObject description = new JSONObject(getString(data.get("description")));
+                // Initial Description type with 'th' and 'en'
                 Description descriptionModel = new Description(getString(description.get("th")), getString(description.get("en")));
+                // Initial Data type with 'docType' and Description type
                 Data dataModel = new Data(getString(data.get("docType")), descriptionModel);
+                // Add each data to 'dataList'
                 dataList.add(dataModel);
             }
+            // Initial all AappmanInternData type with 'Id', 'firstName', 'lastName' and dataList
             appmanInternData = new AppmanInternData(getString(root.get("Id")), getString(root.get("firstName")),
                     getString(root.get("lastName")), dataList);
         } catch (JSONException e) {

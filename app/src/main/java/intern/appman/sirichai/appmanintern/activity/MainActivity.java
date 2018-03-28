@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView titleTv;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
     private JsonAction jsonAction;
 
     @Override
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerViewAdapter(jsonAction.appmanInternData, MainActivity.this);
+        RecyclerView.Adapter adapter = new RecyclerViewAdapter(jsonAction.appmanInternData, MainActivity.this);
         recyclerView.setAdapter(adapter);
         //noinspection AndroidLintSetTextI18n
         titleTv.setText("Id:" + jsonAction.appmanInternData.getId() + " Name: " + jsonAction.appmanInternData.getFirstname()
