@@ -1,11 +1,11 @@
-package intern.appman.sirichai.appmanintern.model.pojo;
+package intern.appman.sirichai.appmanintern.pojo;
 
-public class DescriptionModel {
+public class Description {
 
     private String th;
     private String en;
 
-    public DescriptionModel(String th, String en) {
+    public Description(String th, String en) {
         this.th = th;
         this.en = en;
     }

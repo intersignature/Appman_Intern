@@ -1,19 +1,19 @@
-package intern.appman.sirichai.appmanintern.model.pojo;
+package intern.appman.sirichai.appmanintern.pojo;
 
 import java.util.List;
 
-public class AllDataModel {
+public class AppmanInternData {
 
     private String id;
     private String firstname;
     private String lastname;
-    private List<DataModel> dataModel;
+    private List<Data> data;
 
-    public AllDataModel(String id, String firstname, String lastname, List<DataModel> dataModel) {
+    public AppmanInternData(String id, String firstname, String lastname, List<Data> data) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.dataModel = dataModel;
+        this.data = data;
     }
 
     public String getId() {
@@ -40,16 +40,16 @@ public class AllDataModel {
         this.lastname = lastname;
     }
 
-    public List<DataModel> getDataModel() {
-        return dataModel;
+    public List<Data> getData() {
+        return data;
     }
 
-    public void setDataModel(List<DataModel> dataModel) {
-        this.dataModel = dataModel;
+    public void setData(List<Data> data) {
+        this.data = data;
     }
 
     @Override
     public String toString() {
-        return "id: " + id + " firstname: " + firstname + " lastname: " + lastname + " dataModel: " + dataModel;
+        return "id: " + id + " firstname: " + firstname + " lastname: " + lastname + " data: " + data;
     }
 }

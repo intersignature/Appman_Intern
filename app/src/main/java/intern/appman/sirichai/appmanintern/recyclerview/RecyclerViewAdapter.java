@@ -1,4 +1,4 @@
-package intern.appman.sirichai.appmanintern.model.recyclerview;
+package intern.appman.sirichai.appmanintern.recyclerview;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import intern.appman.sirichai.appmanintern.R;
-import intern.appman.sirichai.appmanintern.model.pojo.AllDataModel;
+import intern.appman.sirichai.appmanintern.pojo.AppmanInternData;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-    private AllDataModel allDataModel;
+    private AppmanInternData appmanInternData;
     private Context context;
 
-    public RecyclerViewAdapter(AllDataModel allDataModel, Context context) {
-        this.allDataModel = allDataModel;
+    public RecyclerViewAdapter(AppmanInternData appmanInternData, Context context) {
+        this.appmanInternData = appmanInternData;
         this.context = context;
     }
 
@@ -29,15 +29,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        String doctype = allDataModel.getDataModel().get(position).getDocType();
+        String doctype = appmanInternData.getData().get(position).getDocType();
         holder.docTypeTv.setText(doctype);
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
                 if (!isLongClick) {
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
-                    alertBuilder.setMessage(allDataModel.getDataModel().get(position).getDescriptionModel().getTh() + " / " +
-                            allDataModel.getDataModel().get(position).getDescriptionModel().getEn())
+                    alertBuilder.setMessage(appmanInternData.getData().get(position).getDescription().getTh() + " / " +
+                            appmanInternData.getData().get(position).getDescription().getEn())
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -51,6 +51,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public int getItemCount() {
-        return allDataModel.getDataModel().size();
+        return appmanInternData.getData().size();
     }
 }

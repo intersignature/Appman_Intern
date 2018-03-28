@@ -1,4 +1,4 @@
-package intern.appman.sirichai.appmanintern.model.recyclerview;
+package intern.appman.sirichai.appmanintern.recyclerview;
 
 import android.view.View;
 

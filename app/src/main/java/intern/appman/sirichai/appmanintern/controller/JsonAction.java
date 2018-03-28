@@ -12,16 +12,16 @@ import java.util.List;
 import java.util.Scanner;
 
 import intern.appman.sirichai.appmanintern.R;
-import intern.appman.sirichai.appmanintern.model.pojo.AllDataModel;
-import intern.appman.sirichai.appmanintern.model.pojo.DataModel;
-import intern.appman.sirichai.appmanintern.model.pojo.DescriptionModel;
+import intern.appman.sirichai.appmanintern.pojo.AppmanInternData;
+import intern.appman.sirichai.appmanintern.pojo.Data;
+import intern.appman.sirichai.appmanintern.pojo.Description;
 
-public class JsonController {
+public class JsonAction {
 
-    public AllDataModel allDataModel;
+    public AppmanInternData appmanInternData;
     private Resources resources;
 
-    public JsonController(Resources resources) {
+    public JsonAction(Resources resources) {
         this.resources = resources;
     }
 
@@ -37,19 +37,19 @@ public class JsonController {
     }
 
     private void parseJson(String s) {
-        List<DataModel> dataModelList = new ArrayList<>();
+        List<Data> dataList = new ArrayList<>();
         try {
             JSONObject root = new JSONObject(s);
             JSONArray datas = root.getJSONArray("data");
             for (int i = 0; i < datas.length(); i++) {
                 JSONObject data = datas.getJSONObject(i);
                 JSONObject description = new JSONObject(getString(data.get("description")));
-                DescriptionModel descriptionModel = new DescriptionModel(getString(description.get("th")), getString(description.get("en")));
-                DataModel dataModel = new DataModel(getString(data.get("docType")), descriptionModel);
-                dataModelList.add(dataModel);
+                Description descriptionModel = new Description(getString(description.get("th")), getString(description.get("en")));
+                Data dataModel = new Data(getString(data.get("docType")), descriptionModel);
+                dataList.add(dataModel);
             }
-            allDataModel = new AllDataModel(getString(root.get("Id")), getString(root.get("firstName")),
-                    getString(root.get("lastName")), dataModelList);
+            appmanInternData = new AppmanInternData(getString(root.get("Id")), getString(root.get("firstName")),
+                    getString(root.get("lastName")), dataList);
         } catch (JSONException e) {
             e.printStackTrace();
         }
